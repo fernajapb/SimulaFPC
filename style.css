@@ -1,0 +1,210 @@
+:root {
+      --bg-main: #001f3f;
+      --bg-sub: #002b5e;
+      --highlight: #0074D9;
+      --text: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text);
+    }
+
+    header {
+      background-color: var(--bg-sub);
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: var(--highlight);
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background-color: white;
+      margin: 4px 0;
+    }
+
+    nav {
+      background-color: var(--bg-sub);
+    }
+
+    #menu {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    #menu > li {
+      position: relative;
+    }
+
+    #menu > li > a {
+      color: var(--text);
+      text-decoration: none;
+      padding: 12px 15px;
+      display: block;
+      font-weight: bold;
+    }
+
+    #menu li ul {
+      display: none;
+      position: absolute;
+      background-color: var(--bg-main);
+      top: 100%;
+      left: 0;
+      list-style: none;
+      min-width: 180px;
+      z-index: 100;
+    }
+
+    #menu li:hover ul {
+      display: block;
+    }
+
+    #menu li ul li a {
+      padding: 10px 15px;
+      display: block;
+      color: white;
+      text-decoration: none;
+      border-bottom: 1px solid #003366;
+    }
+
+    #menu li ul li a:hover {
+      background-color: #003366;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      #menu {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        background-color: var(--bg-sub);
+        width: 220px;
+        height: 100%;
+        overflow-y: auto;
+        z-index: 1000;
+      }
+
+      #menu.show {
+        display: flex;
+      }
+
+      #menu li ul {
+        position: static;
+      }
+
+      #menu li:hover ul {
+        display: none;
+      }
+
+      #menu li.open ul {
+        display: block;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+/*imágenes*/
+  .team-a {
+    background-color: #002366;
+    width: auto;
+    height: auto;
+    }
+   .logo {
+    width: 70px;
+    height: 60px;
+    transition: transform 0.2s ease;
+    }
+    .logos {
+    width: 170px;
+    height: auto;
+    }
+   .logo:hover {
+    transform: scale(1.2);
+     }
+
+   .logobuc{
+    width:70px;
+    height: 60px;
+    transition: transform 0.2s ease;
+    }
+   .logobuc:hover{
+    transform: scale(1.2);
+    }
+
+ .logob{
+    width:70px;
+    height: 60px;
+    transition: transform 0.2s ease;
+  }
+  .logob:hover{
+    transform: scale(1.2);
+  }
+/*estilos tarjeta*/
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background-color: #002b5e;
+  color: white;
+  border-radius: 15px;
+  width: 280px;
+  text-align: center;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.card-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #005eff;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.card-btn:hover {
+  background-color: #0040cc;
+}
