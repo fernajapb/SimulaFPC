@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1a73e8">
+  <title>Simulador Fútbol Colombiano</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e8f5e9;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+      color: #2e7d32;
+    }
+
+    p {
+      max-width: 600px;
+      margin: 0 auto 20px;
+    }
+
+    label {
+      font-size: 27px;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+      color: #2e7d32;
+    }
+
+    input, button {
+      font-size: 40px;
+      padding: 25px 30px;
+      width: 450px;
+      max-width: 100%;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+     #iniciarBtn {
+      background-color: #388e3c;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    #iniciarBtn:hover {
+      background-color: #2e7d32;
+    }
+
+    #resumen {
+      margin-top: 40px;
+      font-size: 16px;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    #escudoCarrusel {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 15px;
+      animation: fade 0.5s ease-in-out;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .contenedor {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  padding: 10px;
+}
+
+.contenedor a {
+  display: block;
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.contenedor img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Centrar la última imagen si está sola */
+.contenedor a.ultima {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: 50%; /* opcional para que no se vea muy grande */
+}
+
+  </style>
+</head>
+<body>
+
+  <h1>Simulador de Fútbol Colombiano</h1>
+  <p>
+    Administra un club colombiano, toma decisiones clave y compite por el título.<br>
+    ¡Demuestra que puedes ser un gran presidente!
+  </p>
+
+  <div>
+    <label for="nombrePresidente">Tu nombre como Presidente:</label>
+    <input type="text" id="nombrePresidente" placeholder="Ej. Juan Pérez">
+    <br>
+    <button id="iniciarBtn">Ingresar al juego</button>
+  </div>
+
+  <div id="resumen">
+    <img id="escudoCarrusel" src="escudos/nacional.png" alt="Escudo equipo">
+    <h2>¿De qué trata el juego?</h2>
+    <p>
+      Este simulador te pone al mando de un club colombiano. Gestiona presupuesto, entrenamientos, decisiones polémicas y compite en torneos reales. ¡Tu liderazgo será clave para ganar!
+    </p>
+  </div>
+
+  
+
+<div class="contenedor">
+  <a href="https://youtu.be/34G0y43x8co?si=wP9WyVbBgT7gyNq6">
+  <img class="img" src="miniaturas/min1.png" alt="m1"></a>
+
+  <a href="https://youtu.be/__DxbENc5i8?si=gI0-K6M-Wb5lw4ke">
+  <img class="img" src="miniaturas/min2.png" alt="m2"></a>
+
+  <a href="https://youtu.be/w9MNYS4BoO8?si=A2uMLjCUo57NYLOE">
+  <img class="img" src="miniaturas/min3.png" alt="m3"></a>
+
+<a href="https://youtube.com/playlist?list=PLKSfNh6TgpCes-tgDlpL1Om6SDiC2sDXq&si=XGQsTHbgrNfMPZTQ">
+  <img class="img" src="miniaturas/ver.png" alt="ver"></a>
+
+</div>
+
+
+
+
+
+
+  <script>
+    // Acción al ingresar
+    document.getElementById("iniciarBtn").addEventListener("click", function () {
+      const nombre = document.getElementById("nombrePresidente").value.trim();
+      if (!nombre) {
+        alert("Por favor ingresa tu nombre para comenzar.");
+        return;
+      }
+      localStorage.setItem("nombrePresidente", nombre);
+      window.location.href = "simulador.html"; // cambia según tu archivo principal
+    });
+
+    // Carrusel de escudos
+    const escudos = [
+      "nacional", "millonarios", "america", "cali", "junior", "santa_fe", "tolima",
+      "medellin", "once_caldas", "pereira", "alianza", "bucaramanga", "la_equidad",
+      "envigado", "pasto", "aguilas", "chico", "fortaleza", "llaneros", "union_m.","atletico_fc","barranquilla","boca_jrs._cali","bogota","cucuta","huila","inter_palmira","jaguares",
+"leones","orsomarso","patriotas","quindio",
+"real_cartagena","real_cundi","real_santander",
+"tigres"
+    ];
+
+    let index = 0;
+    const img = document.getElementById("escudoCarrusel");
+
+    setInterval(() => {
+      index = (index + 1) % escudos.length;
+      img.src = `escudos/${escudos[index]}.png`;
+      img.alt = escudos[index];
+    }, 1500);
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker
+    .register("/service-worker.js")
+    .then(reg => console.log("Service Worker registrado:", reg))
+    .catch(err => console.error("Error al registrar el SW:", err));
+}
+
+
+  </script>
+
+</body>
+</html>
